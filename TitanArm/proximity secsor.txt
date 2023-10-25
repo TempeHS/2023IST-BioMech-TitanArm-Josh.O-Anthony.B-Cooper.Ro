@@ -1,0 +1,27 @@
+#include <wiringPi.h>
+#include <iostream>
+
+#define PROXIMITY_SENSOR_PIN 4 // Replace with the actual GPIO pin number
+
+int main() {
+    if (wiringPiSetup() == -1) {
+        std::cerr << "Failed to initialize WiringPi." << std::endl;
+        return 1;
+    }
+
+    pinMode(PROXIMITY_SENSOR_PIN, INPUT);
+
+    while (true) {
+        int proximityValue = digitalRead(PROXIMITY_SENSOR_PIN);
+
+        if (proximityValue == HIGH) {
+            std::cout << "Object detected!" << std::endl;
+        } else {
+            std::cout << "No object detected." << std::endl;
+        }
+
+        delay(1000); // Check the sensor every 1 second
+    }
+
+    return 0;
+}
