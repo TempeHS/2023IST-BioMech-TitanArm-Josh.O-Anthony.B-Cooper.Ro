@@ -3,11 +3,22 @@
 
 #define PROXIMITY_SENSOR_PIN 4 // Replace with the actual GPIO pin number
 
+
+void setup() {
+ Serial.begin(9600);
+ Serial.println("Serial monitor is configured to 9600br");
+}
+
 int main() {
     if (wiringPiSetup() == -1) {
         std::cerr << "Failed to initialize WiringPi." << std::endl;
         return 1;
     }
+
+
+
+
+
 
     pinMode(PROXIMITY_SENSOR_PIN, INPUT);
 
